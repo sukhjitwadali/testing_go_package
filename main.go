@@ -22,7 +22,15 @@ func contains(vowels string, char rune) bool {
 	return false
 }
 
+func GCD(a, b int) int {
+	if b == 0 {
+		return a
+	}
+	return GCD(b, a%b)
+}
+
 func main() {
 	fmt.Println("CountVowels: ", CountVowels("bcdfg"))
+	fmt.Println("Graetest Common Divisor: ", GCD(17, 18))
 
 }
