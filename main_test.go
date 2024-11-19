@@ -24,7 +24,12 @@ func TestCountVowels(t *testing.T) {
 		})
 	}
 }
-
+func BenchmarkCountVowels(b *testing.B) {
+	input := "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum varius."
+	for i := 0; i < b.N; i++ {
+		CountVowels(input)
+	}
+}
 func TestGCD(t *testing.T) {
 	tests := []struct {
 		name   string
