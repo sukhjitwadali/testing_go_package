@@ -42,9 +42,18 @@ func FindMax(nums []int) int {
 	return max
 }
 
+func Sum(nums []int) int {
+	total := 0
+	for _, num := range nums {
+		total += num
+	}
+	return total
+}
+
 func main() {
 	fmt.Println("CountVowels: ", CountVowels("bcdfg"))
 	fmt.Println("Graetest Common Divisor: ", GCD(17, 18))
 	fmt.Println("Finding maximum number: ", FindMax([]int{19, 3, 2, 11, 4}))
+	fmt.Println("Finding Sum: ", Sum([]int{5, 4, 2, 11, 4}))
 
 }

@@ -99,3 +99,36 @@ func BenchmarkFindMax(b *testing.B) {
 		FindMax(nums)
 	}
 }
+
+func TestSum(t *testing.T) {
+	tests := []struct {
+		name   string
+		input  []int
+		result int
+	}{
+		{"Empty Slice", []int{}, 0},
+		{"Single Element", []int{5}, 5},
+		{"Multiple Elements", []int{1, 2, 3, 4}, 10},
+		{"Negative Numbers", []int{-1, -2, -3}, -6},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := Sum(tt.input)
+			if got != tt.result {
+				t.Errorf("Sum(%v) = %d; want %d", tt.input, got, tt.result)
+			}
+		})
+	}
+}
+
+func BenchmarkSum(b *testing.B) {
+	nums := make([]int, 1000)
+	for i := 0; i < 1000; i++ {
+		nums[i] = i
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Sum(nums)
+	}
+}
