@@ -53,3 +53,8 @@ func TestGCD(t *testing.T) {
 		})
 	}
 }
+func BenchmarkGCD(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		GCD(98765432, 12345678)
+	}
+}
