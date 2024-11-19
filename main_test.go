@@ -58,3 +58,44 @@ func BenchmarkGCD(b *testing.B) {
 		GCD(98765432, 12345678)
 	}
 }
+
+func TestFindMax(t *testing.T) {
+	tests := []struct {
+		name   string
+		input  []int
+		result int
+	}{
+		{"Single Element", []int{5}, 5},
+		{"All Positive Numbers", []int{1, 2, 3, 4, 5}, 5},
+		{"Mixed Positive and Negative", []int{-1, 0, 3, 7, -5}, 7},
+		{"All Negative Numbers", []int{-9, -7, -5, -3}, -3},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := FindMax(tt.input)
+			if got != tt.result {
+				t.Errorf("FindMax(%v) = %d; want %d", tt.input, got, tt.result)
+			}
+		})
+	}
+}
+
+func TestFindMaxPanic(t *testing.T) {
+	defer func() {
+		if r := recover(); r == nil {
+			t.Errorf("Expected panic for empty slice")
+		}
+	}()
+	FindMax([]int{})
+}
+func BenchmarkFindMax(b *testing.B) {
+	nums := make([]int, 1000)
+	for i := 0; i < 1000; i++ {
+		nums[i] = i
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		FindMax(nums)
+	}
+}
