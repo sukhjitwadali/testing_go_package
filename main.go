@@ -56,7 +56,6 @@ func IsPalindrome(s string) bool {
 	s = strings.ReplaceAll(s, " ", "")
 	s = strings.ToLower(s)
 
-	// Check if the string is equal to its reverse
 	for i := 0; i < len(s)/2; i++ {
 		if s[i] != s[len(s)-1-i] {
 			return false
