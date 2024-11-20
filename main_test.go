@@ -132,3 +132,37 @@ func BenchmarkSum(b *testing.B) {
 		Sum(nums)
 	}
 }
+
+// Unit tests for IsPalindrome function
+func TestIsPalindrome(t *testing.T) {
+	tests := []struct {
+		name   string
+		input  string
+		result bool
+	}{
+		{"Empty String", "", true},
+		{"Single Character", "a", true},
+		{"Palindrome", "madam", true},
+		{"Not a Palindrome", "hello", false},
+		{"Palindrome with spaces", "A man a plan a canal Panama", true},
+		{"Case insensitive", "RaceCar", true},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := IsPalindrome(tt.input)
+			if got != tt.result {
+				t.Errorf("IsPalindrome(%q) = %v; want %v", tt.input, got, tt.result)
+			}
+		})
+	}
+}
+
+// Benchmark test for IsPalindrome function
+func BenchmarkIsPalindrome(b *testing.B) {
+	testStr := "A man a plan a canal Panama"
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		IsPalindrome(testStr)
+	}
+}

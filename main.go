@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func CountVowels(s string) int {
 	count := 0
@@ -49,11 +52,23 @@ func Sum(nums []int) int {
 	}
 	return total
 }
+func IsPalindrome(s string) bool {
+	s = strings.ReplaceAll(s, " ", "")
+	s = strings.ToLower(s)
 
+	// Check if the string is equal to its reverse
+	for i := 0; i < len(s)/2; i++ {
+		if s[i] != s[len(s)-1-i] {
+			return false
+		}
+	}
+	return true
+}
 func main() {
 	fmt.Println("CountVowels: ", CountVowels("bcdfg"))
 	fmt.Println("Graetest Common Divisor: ", GCD(17, 18))
 	fmt.Println("Finding maximum number: ", FindMax([]int{19, 3, 2, 11, 4}))
 	fmt.Println("Finding Sum: ", Sum([]int{5, 4, 2, 11, 4}))
+	fmt.Println("Checking Palindrome for 'madam':", IsPalindrome("madam"))
 
 }
