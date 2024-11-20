@@ -133,7 +133,6 @@ func BenchmarkSum(b *testing.B) {
 	}
 }
 
-// Unit tests for IsPalindrome function
 func TestIsPalindrome(t *testing.T) {
 	tests := []struct {
 		name   string
@@ -158,7 +157,6 @@ func TestIsPalindrome(t *testing.T) {
 	}
 }
 
-// Benchmark test for IsPalindrome function
 func BenchmarkIsPalindrome(b *testing.B) {
 	testStr := "A man a plan a canal Panama"
 	b.ResetTimer()
